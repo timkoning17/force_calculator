@@ -1,5 +1,6 @@
 import math
 from lib import *
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -32,45 +33,61 @@ R1 = Robot(
     d_rear_magnet_wheel,
 )
 
-R2 = Robot(
-    l_swingarm,
-    phi_deg,
-    F_magnet_front,
-    F_magnet_rear,
-    F_thrust,
-    wheel_base_x,
-    wheel_base_y,
-    250,
-    d_tube_wheel,
-    d_tube_swing,
-    d_wheel_act,
-    d_rear_magnet_wheel,
-)
-
-R3 = Robot(
-    l_swingarm,
-    phi_deg,
-    F_magnet_front,
-    F_magnet_rear,
-    F_thrust,
-    wheel_base_x,
-    wheel_base_y,
-    450,
-    d_tube_wheel,
-    d_tube_swing,
-    d_wheel_act,
-    d_rear_magnet_wheel,
-)
-
 
 R1.assess_parameter(
-    parameter_name="wheel_base_x", nr_steps=20, value_range=200, plotting=True
+    parameter_name="w_side_plate", nr_steps=10, value_range=200, plotting=True
 )
 
+
+plt.show()
+
+# from kivy.app import App
+# from kivy.uix.gridlayout import GridLayout
+# from kivy.uix.label import Label
+# from kivy.uix.image import Image
+# from kivy.uix.button import Button
+# from kivy.uix.textinput import TextInput
+
+
+# class SayHello(App):
+#     def build(self):
+#         self.window = GridLayout()
+#         self.window.cols = 2
+
+#         # add widgets to window
+#         self.text1 = Label(text="force calculator")
+#         self.window.add_widget(self.text1)
+
+#         self.leftfront = Label(text="")
+#         self.window.add_widget(self.leftfront)
+#         self.leftrear = Label(text="")
+#         self.window.add_widget(self.leftrear)
+#         self.rightfront = Label(text="")
+#         self.window.add_widget(self.rightfront)
+#         self.rightrear = Label(text="")
+#         self.window.add_widget(self.rightrear)
+
+#         self.button = Button(text="Run simulator")
+#         self.button.bind(on_press=self.callback)
+#         self.window.add_widget(self.button)
+
+#         return self.window
+
+#     def callback(self, instance):
+#         # Fl_rear, Fr_rear, Fl_front, Fr_front
+#         self.leftrear_int, self.rightrear_int, self.leftfront_int, self.leftrear_int = (
+#             R1.compute_wheel_normal_forces()
+#         )
+#         self.leftfront.text = str(self.leftfront_int)
+#         self.leftrear.text = str(self.leftrear_int)
+#         self.rightfront.text = str(self.rightfront_int)
+#         self.rightrear.text = str(self.rightrear_int)
+
+
+# if __name__ == "__main__":
+#     SayHello().run()
 
 # R2.forces_swing_angle(True)
 # R3.forces_swing_angle(True)
 # R.assess_width(False)
 # R.assess_tube_wheel(True, parameter=R.wbx)
-
-plt.show()

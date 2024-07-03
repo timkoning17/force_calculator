@@ -96,10 +96,13 @@ class Robot:
 
         Fl_front_df["angle"] = deg_vec
         Fl_front_df["force"] = Fl_front_vec
+
         Fr_front_df["angle"] = deg_vec
         Fr_front_df["force"] = Fr_front_vec
+
         Fl_rear_df["angle"] = deg_vec
         Fl_rear_df["force"] = Fl_rear_vec
+
         Fr_rear_df["angle"] = deg_vec
         Fr_rear_df["force"] = Fr_rear_vec
 
@@ -150,9 +153,9 @@ class Robot:
             parameter = parameter_start_value - value_range + step * i
 
             setattr(self, parameter_name, parameter)
-            self.d_rear_magnet_wheel = (
-                self.wheel_base_x
-            )  # comment this line if you dont want the rear magnet to move with wheelbase
+            # self.d_rear_magnet_wheel = (
+            #     self.wheel_base_x
+            # )  # comment this line if you dont want the rear magnet to move with wheelbase
             for j in range(180):
                 self.phi_deg = j - 90
 
@@ -184,11 +187,10 @@ class Robot:
         Fr_rear_df["angle"] = deg_vec
         Fr_rear_df["force"] = Fr_rear_vec
 
-        ### Plotting
-        fig, axs = plt.subplots(2, 2)
-        fig.suptitle("Parameter: {}".format(parameter_name))
-
         if plotting:
+            ### Plotting
+            fig, axs = plt.subplots(2, 2)
+            fig.suptitle("Parameter: {}".format(parameter_name))
             for i in range(nr_steps):
                 x = Fl_front_df[
                     Fl_front_df["{}".format(parameter)]
