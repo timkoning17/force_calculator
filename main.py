@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # Variables
 l_swingarm = 1034  # mm
 phi_deg = 40  # degree
-F_magnet_front = 6600  # N
+F_magnet_front = 6000  # N
 F_magnet_rear = 1800  # N
 F_thrust = 350  # N
 wheel_base_x = 451  # fwd = 451, bwd = 355 mm
@@ -17,8 +17,10 @@ d_tube_wheel = 220
 d_tube_swing = 125
 d_wheel_act = 120
 d_rear_magnet_wheel = 403
+mu = 0.48
+dload_com = 0.35
 
-R1 = Robot(
+R = Robot(
     l_swingarm,
     phi_deg,
     F_magnet_front,
@@ -31,13 +33,14 @@ R1 = Robot(
     d_tube_swing,
     d_wheel_act,
     d_rear_magnet_wheel,
+    mu,
+    dload_com,
 )
 
 
-R1.assess_parameter(
-    parameter_name="w_side_plate", nr_steps=10, value_range=200, plotting=True
+R.assess_parameter(
+    parameter_name="d_tube_wheel", nr_steps=10, value_range=100, plotting=True
 )
-
 
 plt.show()
 
